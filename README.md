@@ -26,7 +26,9 @@ it use sexcode like base for system
 Installation is possible using Git
 
 git clone https://github.com/sexcod/genesi.git
+
 cd genise
+
 php -S localhost:8080 -t public
 
 Type in your browser: http://localhost
