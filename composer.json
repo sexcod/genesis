@@ -1,0 +1,36 @@
+{
+
+    "name": "ale-php/progs_base",
+    "type": "framework",
+    "description": "base for developer web php",
+    "keywords": ["micro framework","base for developer web"],
+    "homepage": "https://github.com/ale-php/progs_base",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandre Evangelista de Souza",
+            "email": "alexandre@progs.net.br",
+            "homepage": "http://progs.net.br",
+            "role": "Developer"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "SexCode\\Config\\": "app/Config/",
+            "SexCode\\Controller\\": "app/Controllers/",
+            "SexCode\\Model\\": "app/Models/",
+            "SexCode\\Lib\\": "app/Lib/"
+        }
+    },
+
+        "require": {
+         "php" :">= 5.4",
+        "twig/twig": "~1.0",
+        "bramus/router": "^1.0",
+            "doctrine/common": "2.4.*",
+            "doctrine/dbal": "2.4.*",
+            "doctrine/orm": "2.4.*"
+    }
+
+}

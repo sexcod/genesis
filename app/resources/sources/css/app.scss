@@ -1,0 +1,46 @@
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.body{
+  background-color: #ffffff;
+}
+
+
+.contente{
+
+  margin-top: 10%;
+}
+
+ a[class='title']{
+  font-family: "Verdana";
+  font-size: 2em;
+  font-stretch: condensed;
+text-decoration: none;
+  color: #000;
+}
+
+ .square{
+
+   @include make-sm-column(3);
+   @include make-lg-column(2);
+   @include make-md-column(2);
+   float: left;
+   min-height: 200px;
+   margin-left: 6%;
+
+   background-color: $btn-default-border;
+ }
+
+
+@media screen and (max-width: 480px) {
+
+  .square {
+    @include make-md-column(10);
+    @include make-xs-column(10);
+    @include make-md-column-offset(1);
+    @include make-xs-column-offset(1);
+    background-color: rgba(224, 224, 224, 0.99);;
+    min-height: 200px;
+    margin-top: 5%;
+  }
+
+}
