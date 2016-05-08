@@ -33,7 +33,7 @@ Start using your PHP builtin server:
     Now, type in your browser: http://localhost
 
 
-**This project is based in [Base](https://github.com/sexcod/base) and [Tiga (Router)](https://github.com/sexcod/Tiga)**
+**This is based on [Base](https://github.com/sexcod/base) and [Tiga (router)](https://github.com/sexcod/Tiga) open source projects.**
 
 ![Experimental](https://github.com/sexcod/Tiga/blob/master/img/expicon.png)   
 _Experimental: Do **not use** in production!_
