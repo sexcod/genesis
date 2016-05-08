@@ -29,7 +29,7 @@ Get the **Genesis** with:
 
 Start using your PHP builtin server:
     
-    php -S localhost:8080 -t public
+    php -S localhost:80 -t public
     Now, type in your browser: http://localhost
 
 
