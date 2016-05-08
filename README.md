@@ -1,41 +1,39 @@
-# Genise
-![Genise](https://github.com/sexcod/genesi/blob/master/doc/genesi.png)   
+# Genesis
+![Genesis](https://github.com/sexcod/genesi/blob/master/doc/genesi.png)   
 
-Genise is a micro framework  , light for developer 
-it use sexcode like base for system
+The **Genesis** is a micro PHP framework for developing web applications easy and quickly, with the quality "sexcod" design.
 
 ## Features
 
-- Ruter System simple using POST | GET | PUT | DELETE
-- Using Comand line for interaction wich database
-- Using Doctrine ORM form Entity Manager
-- Using Twig for template engine
-- Using Gulp for make min for css and js
+- Simple routers with "POST | GET | PUT | DELETE"   
+- Command line to database interaction
+- Doctrine ORM form Entity Manager
+- Twig template engine - simple, fast and best
+- Gulp to compacting (minify) CSS and Javascript files
 
 
 
 
-## Prerequisites/Requirements
+## Requires
 
-- PHP 5.4 or greater
-- Composer
+- [PHP 5.4 or greater](http://www.php.net)    
+- [Composer](https://getcomposer.org/)    
 
 
-## Installation
+## Install
 
-Installation is possible using Git
+Get the **Genesis** with:
 
-git clone https://github.com/sexcod/genesi.git
+    git clone https://github.com/sexcod/genesis.git
+    cd genesis    
 
-cd genise
+Start using your PHP builtin server:
+    
+    php -S localhost:8080 -t public
+    Now, type in your browser: http://localhost
 
-php -S localhost:8080 -t public
 
-Type in your browser: http://localhost
-
-Required: [PHP 5.5.+](http://www.php.net) & [Composer](https://getcomposer.org/) & [OpenSSL](http://php.net/manual/pt_BR/openssl.installation.php)
-
-basead in [Tiga](https://github.com/sexcod/Tiga)
+**This project is based in [Base](https://github.com/sexcod/base) and [Tiga (Router)](https://github.com/sexcod/Tiga)**
 
 ![Experimental](https://github.com/sexcod/Tiga/blob/master/img/expicon.png)   
 _Experimental: Do **not use** in production!_
