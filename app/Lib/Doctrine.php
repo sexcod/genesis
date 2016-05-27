@@ -22,10 +22,10 @@ $paths = array(BASEPATCH . '/app/Models');
 // configurações do banco de dados
 $dbParams = array(
     'driver' => 'pdo_mysql',
-    'host'=> 'progs.net.br',
-    'user'   => 'progs_mk',
-    'password' => 'mk3600',
-    'dbname'    => 'progs_mk',
+    'host'=> 'localhost',
+    'user'   => '******',
+    'password' => '*****',
+    'dbname'    => '*****',
 );
 $config = Setup::createConfiguration($isDevMode);
 //leitor das annotations das entidades
