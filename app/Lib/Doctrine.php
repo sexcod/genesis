@@ -18,14 +18,15 @@ class Doctrine {
    //se for falso usa o APC como cache, se for true usa cache em arrays
 $isDevMode = false;
 //caminho das entidades
-$paths = array(BASEPATCH . '/app/Models');
+$paths = array(dirname(__DIR__). '/app/Models');
+$db = array(dirname(__DIR__). '/Config/db');
 // configurações do banco de dados
 $dbParams = array(
-    'driver' => 'pdo_mysql',
-    'host'=> 'localhost',
-    'user'   => '******',
-    'password' => '*****',
-    'dbname'    => '*****',
+    'driver' => $db['driver'],
+    'host'=> $db['host'],
+    'user'   => $db['user'],
+    'password' => $db['password'],
+    'dbname'    => $db['database'],
 );
 $config = Setup::createConfiguration($isDevMode);
 //leitor das annotations das entidades
@@ -34,7 +35,7 @@ $config->setMetadataDriverImpl($driver);
 //registra as annotations do Doctrine
 
 AnnotationRegistry::registerFile(
-    BASEPATCH . '/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php'
+    dirname(__DIR__). '/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php'
 );
 //cria o entityManager
 $entityManager = EntityManager::create($dbParams, $config);
@@ -42,13 +43,13 @@ $entityManager = EntityManager::create($dbParams, $config);
 self::$em = $entityManager;
 
   }
-  
+
   public static function getEm(){
-    
+
     if(!is_null(self::$em)){
       return self::$em;
     }
-    
+
   }
-  
+
 }

@@ -19,7 +19,7 @@ namespace SexCode\Lib;
  *
  * @author Bill
  */
-class Router 
+class Router
 {
 
     private $url = '';
@@ -37,15 +37,15 @@ class Router
 
     static $node = null;
 
-    function __construct( 
-        $request = null, 
+    function __construct(
+        $request = null,
         $url = null)
     {
         if ($request !== null)
             define('_RQST', $request);
 
         if ($url !== null)
-            define('_URL', $url);        
+            define('_URL', $url);
 
         //Load configurations
         if(method_exists('Config\Neos\Router', 'routers'))
@@ -73,6 +73,13 @@ class Router
      */
     function run()
     {
+
+$router = $this;
+
+      // Define routes
+      require dirname(__DIR__).'/Config/routers.php';
+
+
         $res = $this->resolve();
 
         $ctrl = isset($res['controller']) && $res['controller'] !== null ? $res['controller'] : $this->defaultController;
@@ -101,10 +108,10 @@ class Router
      *
      */
     function respond(
-        $method = 'all', 
-        $request = '', 
-        $controller = null, 
-        $action = null) 
+        $method = 'all',
+        $request = '',
+        $controller = null,
+        $action = null)
     {
         $method = strtoupper(trim($method));
 
@@ -126,10 +133,10 @@ class Router
     }
 
     /**
-     * Resolve 
-     * 
+     * Resolve
+     *
      */
-    function resolve() 
+    function resolve()
     {
         //first: serach in ALL
         $route = $this->searchRouter($this->all);
@@ -151,45 +158,45 @@ class Router
     }
 
     //Gets
-    function getUrl() 
+    function getUrl()
     {
         return $this->url;
     }
 
-    function getHttp() 
+    function getHttp()
     {
         return $this->http;
     }
 
-    function getBase() 
+    function getBase()
     {
         return $this->base;
     }
 
-    function getRequest() 
+    function getRequest()
     {
         return $this->request;
     }
 
-    function getRouters() 
+    function getRouters()
     {
         return $this->routers;
     }
 
-    function getAll() 
+    function getAll()
     {
         return $this->all;
     }
 
-    function getMethod() 
+    function getMethod()
     {
         return $this->method;
     }
 
     /**
-     * Mount 
+     * Mount
      */
-    private function mount() 
+    private function mount()
     {
         //Detect SSL access
         if (!isset($_SERVER['SERVER_PORT']))
@@ -218,7 +225,7 @@ class Router
      *
      * @params
      */
-    private function searchRouter($routes) 
+    private function searchRouter($routes)
     {
         foreach ($routes as $route) {
             if($route['controller'] === null) continue;
@@ -249,7 +256,7 @@ class Router
      * Get all request headers
      * @return array The request headers
      */
-    private function requestHeaders() 
+    private function requestHeaders()
     {
         // getallheaders available, use that
         if (function_exists('getallheaders')) {
@@ -270,7 +277,7 @@ class Router
      * Get the request method used, taking overrides into account
      * @return string The Request method to handle
      */
-    private function requestMethod() 
+    private function requestMethod()
     {
         // Take the method as found in $_SERVER
         $method = $_SERVER['REQUEST_METHOD'];

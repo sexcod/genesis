@@ -11,6 +11,7 @@ namespace SexCode\Lib;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use SexCode\Lib\Progs_Extension;
+use SexCode\Lib\Doctrine as Doctrine;
 
 class BaseController
 {
@@ -24,9 +25,9 @@ class BaseController
     function __construct()
     {
 
-        $this->loader = new Twig_Loader_Filesystem( BASEPATCH.'/app/resources/view');
+        $this->loader = new Twig_Loader_Filesystem( dirname(__DIR__).'/resources/view');
         $this->twig = new Twig_Environment($this->loader, array(
-            'cache' => BASEPATCH.'/app/resources/cache',
+            'cache' => dirname(__DIR__).'/resources/cache',
         ));
         $this->twig->addExtension(new Progs_Extension());
         $this->em = Doctrine::getEm();

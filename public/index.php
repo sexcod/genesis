@@ -14,11 +14,5 @@ $loader = require dirname(__DIR__).'/vendor/autoload.php';
 // Create Router instance
 $router = new \SexCode\Lib\Router();
 
-
-// Define routes
-require dirname(__DIR__).'/conf.php';
-
-
 // Run it!
 $router->run();
-
