@@ -1,10 +1,16 @@
 <?php
 
-
 use SexCode\Lib\Doctrine;
 
-$dc = new Doctrine();
+$db = [
+  'path' => dirname(__DIR__).'/database/genisis.db',
+  'driver' => 'pdo_sqlite'
+];
 
 
-//cria o entityManager
-$entityManager = Doctrine::getEm();
+$dbParams = [
+  'path' => dirname(__DIR__).'/database/genisis.db',
+  'driver' => 'pdo_sqlite'
+];
+
+?>

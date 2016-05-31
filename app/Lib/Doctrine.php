@@ -18,16 +18,27 @@ class Doctrine {
    //se for falso usa o APC como cache, se for true usa cache em arrays
 $isDevMode = false;
 //caminho das entidades
-$paths = array(dirname(__DIR__). '/app/Models');
+$paths = array(dirname(__DIR__). '/Models');
 $db = array(dirname(__DIR__). '/Config/db');
 // configurações do banco de dados
+
+if($db['driver'] = 'pdo_sql'){
+
+  $dbParams = array(
+      'driver' => $db['driver'],
+      'path'=> $db['path']
+      );
+
+}
+else{
 $dbParams = array(
     'driver' => $db['driver'],
     'host'=> $db['host'],
     'user'   => $db['user'],
     'password' => $db['password'],
     'dbname'    => $db['database'],
-);
+    );
+}
 $config = Setup::createConfiguration($isDevMode);
 //leitor das annotations das entidades
 $driver = new AnnotationDriver(new AnnotationReader(), $paths);
