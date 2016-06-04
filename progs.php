@@ -40,7 +40,16 @@ class Test
         if(isset($parametros[1])){
              $page = $parametros[1];
         }
-       
+          if(isset($parametros[1]) && isset($parametros[2])){
+           
+             $valor = $parametros[0]." ".$parametros[1];  
+             
+             $page = $parametros[2];
+             
+           
+        }
+        
+
        
         
         switch($valor){
@@ -89,15 +98,9 @@ class Test
 
           break;
           
-            case 'controller api -r ':
-            
-          
-          
-          $this->controller($page,true,true);
-          
-           echo "controller $page criado com sucesso \n ";
-
-          break;
+  default:
+  
+      echo "comando não encontrado \n ";
             
         }
         
@@ -164,21 +167,30 @@ public function page($page)
 
 public function controller($page, $api = false , $router = false  )
 {
-    $file = fopen("public/components/$page/$page.html","w");
+    if(!is_dir(('app/Config/router'))){
+        
+        system('mkdir app/Config/router');
+        
+    }
+    
+   
+     $file = fopen("app/Controllers/".ucwords($page)."Controller.php","w"); 
+     
     if($api){
       $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/HomeControllerApi.php');
-      $content = str_replace('HomeControllerApi',ucwords($page).'Controller',$content);
+      $content = str_replace('HomeController',ucwords($page).'Controller',$content);
     }else{
         
      $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/HomeController.php');
         $content = str_replace('HomeController',ucwords($page).'Controller',$content); 
     }
-    if($outer){
-   $file = fopen("app/Config/router/$page.php","w"); 
-   $content = str_replace('HomeController',ucwords($page).'Controller',$content);
-   $content = str_replace('home',ucwords($page).'Controller',$content);
-   fwrite($file,$content);
-   fclose($file); 
+    if($router){
+   $router = fopen("app/Config/router/$page.php","w"); 
+   $contentRouter = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/router.php');
+   $contentRouter = str_replace('HomeController',ucwords($page).'Controller',$contentRouter);
+   $contentRouter = str_replace('home',$page,$contentRouter);
+   fwrite($router,$contentRouter);
+   fclose($router); 
     }
   
    fwrite($file,$content);
@@ -197,7 +209,7 @@ public function controller($page, $api = false , $router = false  )
       g controller  => gera um controller vazio \n 
       g controller api  =>  gera um controller com metodos padrão \n 
       g controller -r  => gera controler com rotas \n 
-      g controller api -r  => gera controler com rotas \n 
+  
       
 
       ");

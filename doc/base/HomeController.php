@@ -13,10 +13,13 @@ use SexCode\Lib\BaseController;
 class HomeController extends BaseController
 {
 
-    public function home()
+/**
+* @description render a view
+*/
+    public function index()
     {
 
-        $this->render('home');
+        $this->render('index');
     }
 
 

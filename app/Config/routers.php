@@ -4,7 +4,7 @@
 
 
 
- $router->respond('get',  '/',    'SexCode\Controller\HomeController::home');
+ $router->respond('get',  '/',    'SexCode\Controller\HomeController::index');
 
 
 ?>
