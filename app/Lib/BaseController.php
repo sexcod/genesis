@@ -40,6 +40,11 @@ class BaseController
         echo $this->twig->render($view.'.html.twig', $params);
     }
 
+  public function view($view,$params = array()){
+
+        echo $this->twig->render($view.'.html', $params);
+    }
+
 
     public function error404(){
 
