@@ -24,7 +24,7 @@ The **Genesis** is a micro PHP framework for developing web applications easy an
 
 Get the **Genesis** with:
 
-    git clone https://github.com/sexcod/genesis.git
+    git clone -b https://github.com/sexcod/genesis.git
     cd genesis    
 
 Start using your PHP builtin server:

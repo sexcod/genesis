@@ -1,0 +1,24 @@
+{
+  "name": "angular",
+  "authors": [
+    "ale-php <alexandre@progs.net.br>"
+  ],
+  "description": "base para desenvolver com angular 1",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "bower"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "bootstrap": "^3.3.6",
+    "router": "@angular/router#^1.0.6",
+    "angular-new-router": "^0.5.3"
+  }
+}

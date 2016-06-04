@@ -1,0 +1,5 @@
+{
+  "name": "router",
+  "version": "1.0.6",
+  "main": ["./js/plugins/router.js"]
+}
