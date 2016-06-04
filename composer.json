@@ -1,10 +1,10 @@
 {
 
-    "name": "ale-php/progs_base",
+    "name": "Genesis",
     "type": "framework",
-    "description": "base for developer web php",
+    "description": "base for developer web php with angular and doctrine",
     "keywords": ["micro framework","base for developer web"],
-    "homepage": "https://github.com/ale-php/progs_base",
+    "homepage": "https://github.com/sexcod/genesis.git",
     "license": "MIT",
     "authors": [
         {
