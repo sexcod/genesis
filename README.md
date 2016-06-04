@@ -18,7 +18,7 @@ The **Genesis** is a micro PHP framework for developing web applications easy an
 
 - [PHP 5.4 or greater](http://www.php.net)    
 - [Composer](https://getcomposer.org/)    
-
+- [Bower](http://bower.io/)  
 
 ## Install
 
@@ -26,6 +26,7 @@ Get the **Genesis** with:
 
     git clone -b https://github.com/sexcod/genesis.git
     cd genesis    
+    bower i
 
 Start using your PHP builtin server:
     
@@ -33,10 +34,6 @@ Start using your PHP builtin server:
     Now, type in your browser: http://localhost
 
 
-**This is based on [Base](https://github.com/sexcod/base) and [Tiga (router)](https://github.com/sexcod/Tiga) open source projects.**
-
-![Experimental](https://github.com/sexcod/Tiga/blob/master/img/expicon.png)   
-_Experimental: Do **not use** in production!_
 
 
 
