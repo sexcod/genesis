@@ -1,4 +1,12 @@
+
 angular.module('app.home', [])
-  .controller('HomeController', [function () {
-    this.name = 'Friend';
-  }]);
+.controller('HomeController',HomeController);
+  
+  
+  function HomeController() {
+    
+    this.name = 'home';
+  };
+  
+  
+ 
