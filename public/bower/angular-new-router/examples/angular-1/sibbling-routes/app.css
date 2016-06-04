@@ -1,9 +1,0 @@
-
-.container {
-  display: flex;
-  flex-flow: row;
-}
-
-[ng-viewport] {
-  flex: 1;
-}
