@@ -1,6 +1,6 @@
 {
 
-    "name": "Genesis",
+    "name": "ale-php/genesis",
     "type": "framework",
     "description": "base for developer web php with angular and doctrine",
     "keywords": ["micro framework","base for developer web"],
