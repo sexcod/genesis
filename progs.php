@@ -34,8 +34,14 @@ class Test
     
     function generate($comando, $parametros){
         
-        $valor = $parametros[0];
-        $page = $parametros[1];
+        if(isset($parametros[0])){
+          $valor = $parametros[0];   
+        }
+        if(isset($parametros[1])){
+             $page = $parametros[1];
+        }
+       
+       
         
         switch($valor){
             
@@ -48,6 +54,48 @@ class Test
            echo "componente $page criado com sucesso \n 
             não esqueça de inserir o componente em sua app.js , \n 
             e no app/resources/view/index.html.twig \n ";
+
+          break;
+          
+           case 'controller':
+            
+          
+          
+          $this->controller($page);
+          
+           echo "controller $page criado com sucesso \n ";
+
+          break;
+          
+            case 'controller api':
+            
+          
+          
+          $this->controller($page,true);
+          
+           echo "controller api $page criado com sucesso \n 
+                 ";
+
+          break;
+          
+            case 'controller -r':
+            
+          
+          
+          $this->controller($page,false,true);
+          
+           echo "controller $page criado com sucesso \n 
+            rota criada com sucesso";
+
+          break;
+          
+            case 'controller api -r ':
+            
+          
+          
+          $this->controller($page,true,true);
+          
+           echo "controller $page criado com sucesso \n ";
 
           break;
             
@@ -98,18 +146,42 @@ class Test
 public function page($page)
 {
     $file = fopen("public/components/$page/$page.html","w");
-    $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/public/components/home/home.html');
+    $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/home.html');
     $content = str_replace('home',"$page",$js);
    fwrite($file,$content);
    fclose($file);
    
     $file = fopen("public/components/$page/$page.js","w");
-    $js = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/public/components/home/home.js');
+    $js = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/home.js');
    
    $js = str_replace('home',"$page",$js);
    $js = str_replace('HomeController',ucwords($page).'Controller',$js);
    
    fwrite($file,$js);
+   fclose($file);
+   
+}
+
+public function controller($page, $api = false , $router = false  )
+{
+    $file = fopen("public/components/$page/$page.html","w");
+    if($api){
+      $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/HomeControllerApi.php');
+      $content = str_replace('HomeControllerApi',ucwords($page).'Controller',$content);
+    }else{
+        
+     $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/HomeController.php');
+        $content = str_replace('HomeController',ucwords($page).'Controller',$content); 
+    }
+    if($outer){
+   $file = fopen("app/Config/router/$page.php","w"); 
+   $content = str_replace('HomeController',ucwords($page).'Controller',$content);
+   $content = str_replace('home',ucwords($page).'Controller',$content);
+   fwrite($file,$content);
+   fclose($file); 
+    }
+  
+   fwrite($file,$content);
    fclose($file);
    
 }
@@ -125,6 +197,7 @@ public function page($page)
       g controller  => gera um controller vazio \n 
       g controller api  =>  gera um controller com metodos padrão \n 
       g controller -r  => gera controler com rotas \n 
+      g controller api -r  => gera controler com rotas \n 
       
 
       ");
