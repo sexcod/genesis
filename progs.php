@@ -31,79 +31,79 @@ class Test
 
         echo "cache limpo";
     }
-    
+
     function generate($comando, $parametros){
-        
+
         if(isset($parametros[0])){
-          $valor = $parametros[0];   
+          $valor = $parametros[0];
         }
         if(isset($parametros[1])){
              $page = $parametros[1];
         }
           if(isset($parametros[1]) && isset($parametros[2])){
-           
-             $valor = $parametros[0]." ".$parametros[1];  
-             
-             $page = $parametros[2];
-             
-           
-        }
-        
 
-       
-        
+             $valor = $parametros[0]." ".$parametros[1];
+
+             $page = $parametros[2];
+
+
+        }
+
+
+
+
         switch($valor){
-            
+
             case 'page':
-            
+
           $result =  system('mkdir public/components/'.$page);
-          
+
           $this->page($page);
-          
-           echo "componente $page criado com sucesso \n 
-            não esqueça de inserir o componente em sua app.js , \n 
+
+           echo "componente $page criado com sucesso \n
+            não esqueça de inserir o componente em sua app.js , \n
             e no app/resources/view/index.html.twig \n ";
 
           break;
-          
+
            case 'controller':
-            
-          
-          
+
+
+
           $this->controller($page);
-          
+
            echo "controller $page criado com sucesso \n ";
 
           break;
-          
+
             case 'controller api':
-            
-          
-          
+
+
+
           $this->controller($page,true);
-          
-           echo "controller api $page criado com sucesso \n 
+
+           echo "controller api $page criado com sucesso \n
                  ";
 
           break;
-          
+
             case 'controller -r':
-            
-          
-          
+
+
+
           $this->controller($page,false,true);
-          
-           echo "controller $page criado com sucesso \n 
+
+           echo "controller $page criado com sucesso \n
             rota criada com sucesso";
 
           break;
-          
+
   default:
-  
+
       echo "comando não encontrado \n ";
-            
+
         }
-        
+
     }
 
     function dbMake($comando, $parametros)
@@ -150,52 +150,52 @@ public function page($page)
 {
     $file = fopen("public/components/$page/$page.html","w");
     $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/home.html');
-    $content = str_replace('home',"$page",$js);
+    $content = str_replace('home',"$page",$content);
    fwrite($file,$content);
    fclose($file);
-   
+
     $file = fopen("public/components/$page/$page.js","w");
     $js = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/home.js');
-   
+
    $js = str_replace('home',"$page",$js);
    $js = str_replace('HomeController',ucwords($page).'Controller',$js);
-   
+
    fwrite($file,$js);
    fclose($file);
-   
+
 }
 
 public function controller($page, $api = false , $router = false  )
 {
     if(!is_dir(('app/Config/router'))){
-        
+
         system('mkdir app/Config/router');
-        
+
     }
-    
-   
-     $file = fopen("app/Controllers/".ucwords($page)."Controller.php","w"); 
-     
+
+
+     $file = fopen("app/Controllers/".ucwords($page)."Controller.php","w");
+
     if($api){
       $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/HomeControllerApi.php');
       $content = str_replace('HomeController',ucwords($page).'Controller',$content);
     }else{
-        
+
      $content = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/HomeController.php');
-        $content = str_replace('HomeController',ucwords($page).'Controller',$content); 
+        $content = str_replace('HomeController',ucwords($page).'Controller',$content);
     }
     if($router){
-   $router = fopen("app/Config/router/$page.php","w"); 
+   $router = fopen("app/Config/router/$page.php","w");
    $contentRouter = file_get_contents('https://raw.githubusercontent.com/sexcod/genesis/1.0/doc/base/router.php');
    $contentRouter = str_replace('HomeController',ucwords($page).'Controller',$contentRouter);
    $contentRouter = str_replace('home',$page,$contentRouter);
    fwrite($router,$contentRouter);
-   fclose($router); 
+   fclose($router);
     }
-  
+
    fwrite($file,$content);
    fclose($file);
-   
+
 }
     function help(){
     	exit("\n \t Help \n
@@ -204,13 +204,13 @@ public function controller($page, $api = false , $router = false  )
       db:model:valida   =>  validate-schema \n
       db:update   =>  update table in database using new models \n
       db:create:entitys  =>   create entitys using table in database \n
-      db:generate:getseters  => generate get and sets in models \n 
-      g page  => gera um componente já no padrão angular \n 
-      g controller  => gera um controller vazio \n 
-      g controller api  =>  gera um controller com metodos padrão \n 
-      g controller -r  => gera controler com rotas \n 
-  
-      
+      db:generate:getseters  => generate get and sets in models \n
+      g page  => gera um componente já no padrão angular \n
+      g controller  => gera um controller vazio \n
+      g controller api  =>  gera um controller com metodos padrão \n
+      g controller -r  => gera controler com rotas \n
+
+
 
       ");
     }
